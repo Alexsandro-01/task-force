@@ -1,0 +1,16 @@
+{
+  "name": "Task Force Todo list",
+  "short_name": "Task Force",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#00c590",
+  "theme_color": "#00c590",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/task-icon.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    }
+  ]
+}
