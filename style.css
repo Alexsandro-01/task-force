@@ -1,0 +1,113 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.light {
+  --color1: #eee;
+  --destak: #00c590;
+  --text-color: #222;
+
+  --second-color: #fff;
+  --third-color: #aaa;
+}
+
+.dark {
+  --color1: #222;
+  --destak: #00c590;
+  --text-color: #eee;
+
+  --second-color: #333;
+  --third-color: #666;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--color1);
+  color: var(--text-color);
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  max-width: 900px;
+  margin: auto;
+}
+
+nav h1 {
+  color: var(--destak);
+  font-size: 2em;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+main {
+  max-width: 900px;
+  margin: auto;
+}
+
+form div {
+  width: 100%;
+  display: flex;
+}
+
+#new-task {
+  padding: .5em;
+  flex-grow: 1;
+  border: none;
+  border-radius: .25em;
+  margin-right: .5em;
+}
+
+#btn-submit {
+  background-color: var(--destak);
+  color: #fff;
+  font-weight: 900;
+  font-size: xx-large;
+  border: none;
+  line-height: 40px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.section-new-task {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  width: 100%;
+  background-color: var(--color1);
+  box-shadow: 0 -3px 15px #111;
+
+  position: fixed;
+  bottom: 0;
+}
+
+.section-tasks {
+  font-size: .8em;
+  padding: 1em;
+}
+
+.empity {
+  text-align: center;
+  color: var(--third-color);
+}
+
+.task-card {
+  padding: 1em;
+  background-color: var(--second-color);
+  margin: .5em 0;
+  border-radius: .25em;
+}
+
+.task-card p {
+  display: flex;
+  justify-content: space-between;
+}
