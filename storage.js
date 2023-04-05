@@ -1,4 +1,4 @@
-const TASKS_ID = {
+export const TASKS_ID = {
   get: () => {
     const id = localStorage.getItem('index');
 
@@ -10,7 +10,7 @@ const TASKS_ID = {
   }
 }
 
-function getTasks() {
+export function getTasks() {
   const tasks = localStorage.getItem(('tasks'));
 
   if (tasks) return JSON.parse(tasks);
@@ -18,7 +18,7 @@ function getTasks() {
   return [];
 }
 
-function addTask(task) {
+export function addTask(task) {
   const tasks = localStorage.getItem('tasks');
 
   let id = TASKS_ID.get();
