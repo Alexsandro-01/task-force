@@ -7,7 +7,9 @@ const assets = [
   "/manifest.json",
   "/script.js",
   "/storage.js",
-  "/images/task-icon.png"
+  "/images/task-icon.png",
+  "/images/icon.png",
+  "/images/fav-ico.png",
 ];
 
 self.addEventListener("install", installEvent => {
