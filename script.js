@@ -1,5 +1,3 @@
-import { getTasks, addTask } from './storage.js';
-
 function getElement(attrib) {
   return document.querySelector(attrib);
 }
