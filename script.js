@@ -17,7 +17,7 @@ function createTaskCard() {
   let output = "";
 
   if (tasks.length === 0) {
-    output = `<p class="empity">Nothing here yet</p>`
+    output = `<p class="empty">Nothing here yet</p>`
     tasksList.innerHTML = output;
   } else {
     tasks.forEach((task) => {
@@ -99,14 +99,20 @@ const btnSubmit = getElement('#btn-submit');
 btnSubmit.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const newTask = getElement('#new-task')
+  const newTask = getElement('.new-task')
 
-  addTask(newTask.value);
+  if (!newTask.value) {
+    newTask.classList += ' invalid-content';
+    newTask.focus();
 
-  newTask.value = ''
-  newTask.focus();
-
-  createTaskCard();
+  } else {
+    addTask(newTask.value);
+  
+    newTask.value = ''
+    newTask.focus();
+  
+    createTaskCard();
+  }
 })
 
 // Service Worker
