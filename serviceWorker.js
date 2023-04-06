@@ -4,7 +4,9 @@ const assets = [
   "/",
   "/index.html",
   "/style.css",
+  "/manifest.json",
   "/script.js",
+  "/storage.js",
   "/images/task-icon.png"
 ];
 
@@ -20,7 +22,7 @@ self.addEventListener("fetch", fetchEvent => {
   fetchEvent.respondWith(
     
     caches.match(fetchEvent.request).then(res => {
-      return fetch(fetchEvent.request) || res;
+      return  res || fetch(fetchEvent.request);
     })
   );
 });

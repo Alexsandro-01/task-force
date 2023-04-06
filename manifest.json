@@ -10,7 +10,14 @@
     {
       "src": "/images/task-icon.png",
       "type": "image/png",
-      "sizes": "144x144"
+      "sizes": "144x144",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ]
 }
