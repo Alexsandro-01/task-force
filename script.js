@@ -26,6 +26,7 @@ function createTaskCard() {
         <div class="task-card">
           <p>
             <input type="checkbox" class="task" name="${'task_'+task.id}" id="${task.id}" ${!isActive && 'checked'}>
+            <label for="${task.id}"></label>
 
             ${task.name} 
           </p>
