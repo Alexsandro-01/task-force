@@ -27,9 +27,11 @@ function createTaskCard() {
       output += `
         <div class="task-card">
           <p>
-            ${task.name} 
             <input type="checkbox" class="task" name="${'task_'+task.id}" id="${task.id}" ${!isActive && 'checked'}>
+
+            ${task.name} 
           </p>
+          <button class="del-btn" id="${task.id}">X</button>
         </div>
       `;
   
@@ -37,6 +39,7 @@ function createTaskCard() {
     });
 
     addListenerToTasks();
+    addListenerToDeleteTaskButton();
   }
 }
 
@@ -49,24 +52,45 @@ function addListenerToTasks() {
   allTasks.forEach(task => {
 
     task.addEventListener('change', (e) => {
-    const tasks = getTasks();
-    
-    const updatedTasks = tasks.map((task) => {
-      if (task.id === Number(e.target.id)) {
-        console.log(!task.active);
-        task.active = !task.active;
-      }
+      const tasks = getTasks();
       
-      return task;
-    });
-    
-    localStorage.setItem(
-      'tasks',
-      JSON.stringify(updatedTasks)
-    );
+      const updatedTasks = tasks.map((task) => {
+        if (task.id === Number(e.target.id)) {
+          console.log(!task.active);
+          task.active = !task.active;
+        }
+        
+        return task;
+      });
+      
+      localStorage.setItem(
+        'tasks',
+        JSON.stringify(updatedTasks)
+      );
 
     });
 
+  });
+}
+
+function addListenerToDeleteTaskButton() {
+  const allBtns = getElements('.del-btn');
+
+  allBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const tasks = getTasks();
+
+      const filteredtasks = tasks.filter((task) => {
+        if (task.id !== Number(e.target.id)) return task;
+      });
+
+      localStorage.setItem(
+        'tasks',
+        JSON.stringify(filteredtasks)
+      );
+
+      createTaskCard();
+    });
   });
 }
 
