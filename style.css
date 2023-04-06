@@ -41,7 +41,7 @@ nav {
 
 nav h1 {
   color: var(--destak);
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 600;
 }
 
@@ -55,7 +55,22 @@ main {
   margin: auto;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 /* Section new task */
+
+.section-new-task {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  width: 100%;
+  background-color: var(--color1);
+  box-shadow: 0 -3px 15px #111;
+  position: fixed;
+  bottom: 0;
+}
 
 form div {
   width: 100%;
@@ -87,16 +102,7 @@ form div {
   border-radius: 50%;
 }
 
-.section-new-task {
-  display: flex;
-  flex-direction: column;
-  padding: 1em;
-  width: 100%;
-  background-color: var(--color1);
-  box-shadow: 0 -3px 15px #111;
-  position: fixed;
-  bottom: 0;
-}
+
 
 /* Section tasks cards  */
 
@@ -135,4 +141,53 @@ form div {
   color: var(--third-color);
   font-weight: 900;
   font-size: large;
+}
+
+.task {
+  display: none;
+}
+
+label {
+  margin-right: 1em;
+  width: 20px;
+  height: 20px;
+  border: solid 2px var(--destak);
+  border-radius: 5px;
+}
+
+label::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 0px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--text-color);
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.task:checked + label {
+  background-color: var(--destak);
+  position: relative;
+}
+
+.task:checked + label::after {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .section-new-task {
+    position: static;
+    background-color: none;
+    box-shadow: none;
+  }
+
+  .section-tasks {
+    font-size: 1em;
+    padding: 1em;
+  }
 }
