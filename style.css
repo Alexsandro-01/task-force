@@ -43,12 +43,24 @@ nav h1 {
   color: var(--destak);
   font-size: 3em;
   font-weight: 600;
+  padding: 1rem 0;
 }
 
 nav ul {
   display: flex;
+  width: 50%;
+  max-width: 200px;
   list-style: none;
+  justify-content: space-between;
 }
+
+nav ul button {
+  background-color: transparent;
+
+  border: none;
+  color: var(--third-color);
+}
+
 
 main {
   max-width: 900px;
@@ -57,6 +69,10 @@ main {
 
 button:hover {
   cursor: pointer;
+}
+
+.active-filter {
+  color: var(--text-color);
 }
 
 /* Section new task */
@@ -102,20 +118,18 @@ form div {
   border-radius: 50%;
 }
 
-
-
 /* Section tasks cards  */
 
 .section-tasks {
   font-size: .8em;
   padding: 1em;
+  padding-bottom: 6em;
 }
 
 .empty {
   text-align: center;
   color: var(--third-color);
 }
-
 
 .task-card {
   padding: 1em;
@@ -148,9 +162,8 @@ form div {
 }
 
 label {
+  padding: 10px;
   margin-right: 1em;
-  width: 20px;
-  height: 20px;
   border: solid 2px var(--destak);
   border-radius: 5px;
 }
@@ -159,8 +172,8 @@ label::after {
   content: "";
   position: absolute;
   display: none;
-  left: 5px;
-  top: 0px;
+  left: 6px;
+  top: 3px;
   width: 4px;
   height: 8px;
   border: solid var(--text-color);
