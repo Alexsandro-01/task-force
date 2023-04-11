@@ -6,9 +6,28 @@ function getElements(attrib) {
   return document.querySelectorAll(attrib);
 }
 
-function createTaskCard() {
-  const tasks = getTasks();
+function createCard(task, isActive) {
+  return `
+          <div class="task-card">
+            <p>
+              <input type="checkbox" class="task" name="${'task_'+task.id}" id="${'task_'+task.id}" ${!isActive && 'checked'}>
+              <label for="${'task_'+task.id}"></label>
 
+              ${task.name} 
+            </p>
+            <button class="del-btn" id="${task.id}">X</button>
+          </div>
+        `;
+}
+
+function createInitialFilter() {
+  const actualFilter = FILTER.get();
+
+  if (!actualFilter) FILTER.set('all');
+}
+
+
+function createTaskCards(tasks) {
   const tasksList = getElement('.section-tasks');
   tasksList.innerHTML = ''
 
@@ -20,19 +39,7 @@ function createTaskCard() {
   } else {
     tasks.forEach((task) => {
 
-      const isActive = task.active;
-
-      output += `
-        <div class="task-card">
-          <p>
-            <input type="checkbox" class="task" name="${'task_'+task.id}" id="${task.id}" ${!isActive && 'checked'}>
-            <label for="${task.id}"></label>
-
-            ${task.name} 
-          </p>
-          <button class="del-btn" id="${task.id}">X</button>
-        </div>
-      `;
+      output += createCard(task, task.active);
   
       tasksList.innerHTML = output;
     });
@@ -42,7 +49,37 @@ function createTaskCard() {
   }
 }
 
-createTaskCard();
+const FILTER_TASKS = {
+  all: () => {
+    const tasks = getTasks();
+    
+    createTaskCards(tasks);
+  },
+  active: () => {
+    const tasks = getTasks();
+    
+    const filtered = tasks.filter((task) => {
+      if (task.active) return task;
+    });
+    
+    createTaskCards(filtered);
+  },
+  completed: () => {
+    const tasks = getTasks();
+
+    const filtered = tasks.filter((task) => {
+      if (!task.active) return task;
+    });
+  
+    createTaskCards(filtered);
+  }
+}
+
+createInitialFilter();
+
+const actualFilter = FILTER.get();
+
+FILTER_TASKS[actualFilter]();
 
 
 function addListenerToTasks() {
@@ -67,6 +104,7 @@ function addListenerToTasks() {
         JSON.stringify(updatedTasks)
       );
 
+      FILTER_TASKS[FILTER.get()]();
     });
 
   });
@@ -88,7 +126,7 @@ function addListenerToDeleteTaskButton() {
         JSON.stringify(filteredtasks)
       );
 
-      createTaskCard();
+      FILTER_TASKS[FILTER.get()]();
     });
   });
 }
@@ -110,8 +148,25 @@ btnSubmit.addEventListener("click", (e) => {
     newTask.value = ''
     newTask.focus();
   
-    createTaskCard();
+    FILTER_TASKS[actualFilter]();
   }
+});
+
+const filterBtns = getElements('.filter-btn');
+
+filterBtns.forEach((btn) => {
+
+  if (btn.innerHTML === FILTER.get()) btn.className += " active-filter";
+
+  btn.addEventListener('click', (e) => {
+    const filter = e.target.innerHTML;
+    
+    filterBtns.forEach((button) => button.className = "filter-btn");
+    e.target.className += " active-filter";
+
+    FILTER.set(filter);
+    FILTER_TASKS[filter]();
+  })
 })
 
 // Service Worker
