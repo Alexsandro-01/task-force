@@ -10,6 +10,18 @@ const TASKS_ID = {
   }
 }
 
+const FILTER = {
+  get: () => {
+    const filter = localStorage.getItem('filter');
+
+    return filter;
+  },
+
+  set: (newFilter) => {
+    localStorage.setItem('filter', newFilter);
+  }
+}
+
 function getTasks() {
   const tasks = localStorage.getItem(('tasks'));
 
@@ -48,3 +60,4 @@ function addTask(task) {
     );
   }
 }
+
