@@ -1,0 +1,25 @@
+{
+  "name": "pwa",
+  "version": "1.0.0",
+  "description": "A PWA aplication",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexsandro-01/task-force.git"
+  },
+  "author": "Alexsandro Pinheiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexsandro-01/task-force/issues"
+  },
+  "homepage": "https://github.com/Alexsandro-01/task-force#readme",
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
+  }
+}

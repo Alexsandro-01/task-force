@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 const TASKS_ID = {
   get: () => {
     const id = localStorage.getItem('index');
@@ -7,8 +9,8 @@ const TASKS_ID = {
 
   set: (newId) => {
     localStorage.setItem('index', newId);
-  }
-}
+  },
+};
 
 const FILTER = {
   get: () => {
@@ -19,8 +21,8 @@ const FILTER = {
 
   set: (newFilter) => {
     localStorage.setItem('filter', newFilter);
-  }
-}
+  },
+};
 
 function getTasks() {
   const tasks = localStorage.getItem(('tasks'));
@@ -33,16 +35,16 @@ function getTasks() {
 function addTask(task) {
   const tasks = localStorage.getItem('tasks');
 
-  let id = TASKS_ID.get();
+  const id = TASKS_ID.get();
 
   const newTask = {
     id,
     name: task,
     active: true,
     date: new Date(),
-  }
+  };
 
-  TASKS_ID.set(++id);
+  TASKS_ID.set(id + 1);
 
   if (tasks) {
     const oldTasks = getTasks();
@@ -51,13 +53,12 @@ function addTask(task) {
 
     localStorage.setItem(
       'tasks',
-      JSON.stringify(oldTasks)
+      JSON.stringify(oldTasks),
     );
   } else {
     localStorage.setItem(
       'tasks',
-      JSON.stringify([newTask])
+      JSON.stringify([newTask]),
     );
   }
 }
-
