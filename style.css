@@ -6,16 +6,7 @@
   font-weight: 300;
 }
 
-.light {
-  --color1: #eee;
-  --destak: #00c590;
-  --text-color: #222;
-
-  --second-color: #fff;
-  --third-color: #aaa;
-}
-
-.dark {
+:root {
   --color1: #222;
   --destak: #00c590;
   --text-color: #eee;
@@ -63,7 +54,7 @@ nav ul button {
 
 
 main {
-  max-width: 900px;
+  max-width: 768px;
   margin: auto;
 }
 
@@ -166,6 +157,10 @@ label {
   margin-right: 1em;
   border: solid 2px var(--destak);
   border-radius: 5px;
+}
+
+label:hover {
+  cursor: pointer;
 }
 
 label::after {
